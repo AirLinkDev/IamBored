@@ -41,7 +41,8 @@ app.post("/", async (req, res) => {
   
   try {
     const response = await axios.get(apiQuery);
-    const result = response.data[0];
+    const index = Math.floor(Math.random()*response.data.length);
+    const result = response.data[index];
 
     console.log("API Response Object: "+JSON.stringify(result));
 
