@@ -10,7 +10,13 @@
 
 <body>
   <div class="container">
-    <h1>Let's find something for you to do ✌️</h1>
+    <h1>
+      <% if(!locals.error){%>
+        Let's find something for you to do ✌️
+      <%}else{%>
+      <%=locals.error%>
+      <%}%>
+    </h1>
 
     <form action="/" id="form" class="form" method="POST">
       <select name="type" class="form-select">
@@ -37,17 +43,23 @@
       <article class="card-item">
         <h2 class="card-activity">
           <!-- Show Activity -->
-          <% console.log("Activity: "+locals.data.activity);%>
+          <% if(!locals.error){%>
+          <% console.log("Data: "+JSON.stringify(locals.data));%>
           <%= locals.data.activity%>
+          <% } %>
         </h2>
         <div class="card-info">
           <span class="card-type">
             <!-- Show Activity type -->
+            <% if(!locals.error){%>
             <%= locals.data.type%>
+            <% } %>
           </span>
           <span class="card-participants">
             <!-- participants: Show participant number -->
+            <% if(!locals.error){%>
             <%= locals.data.participants%>
+            <% } %>
             <span class="card-number"></span>
           </span>
         </div>
